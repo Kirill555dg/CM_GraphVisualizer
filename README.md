@@ -70,17 +70,17 @@ py [visualizer] [config]
 
 Пакет "axios":
 <p align="left">
-  <img src="axios_dependency_graph.svg" width="600" height="400" alt="Dependency Graph">
+  <img src="./Results/axios/dependency_graph.svg" width="600" height="400" alt="Dependency Graph">
 </p>
 
 Пакет "react-dom":
 <p align="left">
-  <img src="react-dom_dependency_graph.svg" width="600" height="400" alt="Dependency Graph">
+  <img src="./Results/react-dom/dependency_graph.svg" width="600" height="400" alt="Dependency Graph">
 </p>
 
 Пакет "express":
 <p align="left">
-  <img src="express_dependency_graph.svg" width="600" height="400" alt="Dependency Graph">
+  <img src="./Results/express/dependency_graph.svg" width="600" height="400" alt="Dependency Graph">
 </p>
 
 
