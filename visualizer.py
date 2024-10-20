@@ -71,6 +71,7 @@ def is_version_compatible(version, spec):
         return version_parts == base_version
 
 def get_dependencies(package_name, npm_registry_url, depth, max_depth, graph):
+    print(f"Получаем данные о пакете {package_name}...")
     if depth > max_depth:
         return
 
@@ -121,18 +122,22 @@ def get_graph(graph):
 
 
 def save_mermaid_file(content, package_name):
-    file_name = f"{package_name}_dependency_graph.mmd"
+    dir_path = f"./Results/{package_name}"
+    if not os.path.exists(dir_path):
+        os.mkdir(dir_path)
+    file_name = f"{dir_path}/dependency_graph.mmd"
     with open(file_name, "w") as file:
         file.write(content)
-    print(f"Mermaid файл сохранен как {file_name} в папке с визуализатором")
+    print(f"Mermaid файл сохранен как dependency_graph.mmd в папке {dir_path}")
 
 
 def generate_mermaid_graph(package_name, mermaid_path):
-    input_file = f"{package_name}_dependency_graph.mmd"
-    output_file = f"{package_name}_dependency_graph.svg"
+    dir_path = f"./Results/{package_name}"
+    input_file = f"{dir_path}/dependency_graph.mmd"
+    output_file = f"{dir_path}/dependency_graph.svg"
     try:
         call([mermaid_path, "-i", input_file, "-o", output_file])
-        print(f"Граф успешно сгенерирован и сохранен как {output_file} в папке с визуализатором")
+        print(f"Граф успешно сгенерирован и сохранен как dependency_graph.svg в папке {dir_path}")
     except OSError as e:
         print(f"Ошибка при генерации графа: {e}")
 
@@ -143,13 +148,13 @@ def main():
 
     package_data = fetch_package_data(package_name, npm_registry_url)
     if not package_data:
-        print(f"Не удалось получить данные о пакете {package_name}")
+        print(f"Не удалось найти пакет {package_name}")
         exit(1)
 
-    print(f"Данные о пакете {package_name} успешно получены.")
+    print(f"Пакет {package_name} успешно найден.")
 
     get_dependencies(package_name, npm_registry_url, 0, max_depth, graph)
-    print(graph)
+
     mermaid_graph = get_graph(graph)
 
     save_mermaid_file(mermaid_graph, package_name)

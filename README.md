@@ -13,15 +13,15 @@
    
 3. Убедитесь, что у вас установлен Python 3.x.
 
-4. Установите необходимую библиотеку **requests**:
-   ```bash
-   pip install requests
-   ```
-5. Создайте виртуальное окружение (опционально):
+4. Создайте и активируйте виртуальное окружение:
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # Для Linux/Mac
    venv\Scripts\activate     # Для Windows
+   ```
+5. Установите необходимые зависимости:
+   ```bash
+   pip install -r requirements.txt
    ```
 
 Проект установлен.

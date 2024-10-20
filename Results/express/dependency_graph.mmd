@@ -1,6 +1,6 @@
 classDiagram
   class express {
-    +version: 4.21.0
+    +version: 4.21.1
   }
   express --> qs
   express --> depd
@@ -66,26 +66,22 @@ classDiagram
     +version: 1.8.1
   }
   class send {
-    +version: 0.19.0
+    +version: 1.1.0
   }
   send --> ms
-  send --> depd
   send --> etag
-  send --> mime
   send --> debug
   send --> fresh
   send --> destroy
   send --> statuses
   send --> encodeurl
+  send --> mime-types
   send --> escape-html
   send --> http-errors
   send --> on-finished
   send --> range-parser
   class ms {
     +version: 2.1.3
-  }
-  class mime {
-    +version: 4.0.4
   }
   class debug {
     +version: 4.3.7
@@ -102,6 +98,13 @@ classDiagram
   }
   class encodeurl {
     +version: 2.0.0
+  }
+  class mime-types {
+    +version: 2.1.35
+  }
+  mime-types --> mime-db
+  class mime-db {
+    +version: 1.53.0
   }
   class escape-html {
     +version: 1.0.3
@@ -137,22 +140,15 @@ classDiagram
     +version: 1.1.2
   }
   class cookie {
-    +version: 0.7.2
+    +version: 1.0.1
   }
   class accepts {
     +version: 1.3.8
   }
   accepts --> mime-types
   accepts --> negotiator
-  class mime-types {
-    +version: 2.1.35
-  }
-  mime-types --> mime-db
-  class mime-db {
-    +version: 1.53.0
-  }
   class negotiator {
-    +version: 0.6.3
+    +version: 1.0.0
   }
   class methods {
     +version: 1.1.2
